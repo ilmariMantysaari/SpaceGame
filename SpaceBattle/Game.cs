@@ -73,7 +73,7 @@ namespace SpaceBattle
     protected override void Draw(GameTime gameTime)
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
-      spriteBatch.Begin();
+      spriteBatch.Begin(samplerState : SamplerState.PointClamp);
 
       // Draw the Player
       level.Draw(spriteBatch);

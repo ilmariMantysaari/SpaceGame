@@ -10,6 +10,8 @@ namespace SpaceBattle.GameObjects
     public bool Active;
     public int Health;
 
+    protected Texture2D smallShip;
+
     public Player()
     {
       Active = true;

@@ -43,13 +43,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="GameObjects\AsteroidField.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Level.cs" />
+    <Compile Include="GameObjects\Asteroid.cs" />
     <Compile Include="GameObjects\Levels\Level1.cs" />
     <Compile Include="GameObjects\Levels\Level2.cs" />
     <Compile Include="GameObjects\Levels\MainMenu.cs" />
     <Compile Include="GameObjects\SceneItem.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Ship.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,10 +116,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="Content\obj\.mgcontent" />
     <None Include="Content\obj\Sprites\player.mgcontent" />
-    <None Include="Content\Sprites\Fat ship-20170620-210436.piskel" />
-    <None Include="Content\Sprites\lean_ship-20170620-211504.piskel" />
-    <None Include="Content\Sprites\rocket-20170620-213528.piskel" />
-    <None Include="Content\Sprites\ship-20170620-212437.piskel" />
     <None Include="Content\Sprites\ship2.piskel" />
   </ItemGroup>
   <ItemGroup>

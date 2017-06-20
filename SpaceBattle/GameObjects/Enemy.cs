@@ -3,23 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceBattle.GameObjects
 {
-  class Enemy
+  public class Enemy
   {
     public Texture2D Texture;
     public Vector2 Position;
     public bool Active;
     public int Health;
-
-    public int Width
-    {
-      get { return Texture.Width; }
-    }
-
-    public int Height
-    {
-      get { return Texture.Height; }
-    }
-
+    
     public void Initialize(Texture2D texture, Vector2 position)
     {
       Texture = texture;

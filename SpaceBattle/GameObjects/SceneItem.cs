@@ -33,7 +33,6 @@ namespace SpaceBattle.GameObjects
       batch.Draw(Texture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
     }
 
-
     //For loading content of sceneitem, such as textures and sounds etc
     public abstract void LoadContent();
 

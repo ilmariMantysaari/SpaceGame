@@ -1,6 +1,11 @@
 Planeetat hubeina
 
 todo:
+    LoadContentin fiksuntaminen
+        esim asteroidin contentin lataaminen
+        päällekkäinen assettien latailu
+            texturet esim static muuttujiksi?
+        Yleiset assetit, ei latausta joka levelin kohdalla
 	vihollinen
 	ammus
 	collision
@@ -9,8 +14,8 @@ todo:
 	levelin vaihto
 	liike
 	kamera
-	pitäisikö texturen olla luokka muuttuja?
-	
+    
+    
 Speksiä:
     Playerin sprite on 128px korkea
     
