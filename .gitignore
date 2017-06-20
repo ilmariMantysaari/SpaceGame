@@ -1,5 +1,5 @@
 SpaceBattle/bin/
 SpaceBattle/obj/
-SpaceBattle/Content/bin/DesktopGL/Sprites/fat_ship.xnb
-SpaceBattle/Content/bin/DesktopGL/Sprites/lean_ship.xnb
-SpaceBattle/Content/obj/DesktopGL/Sprites/ship2.mgcontent
+SpaceBattle/Content/bin/
+SpaceBattle/Content/obj/
+.vs/
