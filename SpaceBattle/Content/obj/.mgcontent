@@ -4,6 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Rojektit/Peliprojektit/SpaceBattle/SpaceBattle/Content/Sprites/player.png</File>
+    <File>C:/Users/Käyttäjä/Desktop/OC/SpaceGame/SpaceBattle/Content/Sprites/fat_ship.png</File>
+    <File>C:/Users/Käyttäjä/Desktop/OC/SpaceGame/SpaceBattle/Content/Sprites/lean_ship.png</File>
+    <File>C:/Users/Käyttäjä/Desktop/OC/SpaceGame/SpaceBattle/Content/Sprites/rocket.png</File>
+    <File>C:/Users/Käyttäjä/Desktop/OC/SpaceGame/SpaceBattle/Content/Sprites/ship.png</File>
+    <File>C:/Users/Käyttäjä/Desktop/OC/SpaceGame/SpaceBattle/Content/Sprites/ship2.png</File>
   </SourceFiles>
 </SourceFileCollection>

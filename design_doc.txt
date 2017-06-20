@@ -11,7 +11,10 @@ todo:
 	kamera
 	pitäisikö texturen olla luokka muuttuja?
 	
-
+Speksiä:
+    Playerin sprite on 128px korkea
+    
+    
 Game
 
 Screen

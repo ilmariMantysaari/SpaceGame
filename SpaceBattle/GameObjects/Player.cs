@@ -18,7 +18,7 @@ namespace SpaceBattle.GameObjects
 
     public override void LoadContent()
     {
-      Texture = SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\player");
+      Texture = SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\ship");
     }
 
     public override void Update()

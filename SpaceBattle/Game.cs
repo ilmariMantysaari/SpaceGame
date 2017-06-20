@@ -36,10 +36,7 @@ namespace SpaceBattle
       level = new Level1(spriteBatch, player);
       base.Initialize();
     }
-
-    /// <summary>
-    /// Loads all content
-    /// </summary>
+    
     protected override void LoadContent()
     {
       //TODO: lataa conffi tiedosto
@@ -50,10 +47,7 @@ namespace SpaceBattle
       player.LoadContent();
       level.LoadContent();
     }
-
-    /// <summary>
-    /// Unloads content
-    /// </summary>
+    
     protected override void UnloadContent()
     {
     }
@@ -65,11 +59,7 @@ namespace SpaceBattle
       //load uus
       //uuden käynnistys
     }
-
-    /// <summary>
-    /// Updates game
-    /// </summary>
-    /// <param name="gameTime">Provides a snapshot of timing values.</param>
+    
     protected override void Update(GameTime gameTime)
     {
       if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -79,11 +69,7 @@ namespace SpaceBattle
 
       base.Update(gameTime);
     }
-
-    /// <summary>
-    /// Draws game, no updating logic here
-    /// </summary>
-    /// <param name="gameTime">Snapshot of timing values.</param>
+    
     protected override void Draw(GameTime gameTime)
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
