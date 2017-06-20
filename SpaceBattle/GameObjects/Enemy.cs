@@ -1,20 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SpaceBattle
+namespace SpaceBattle.GameObjects
 {
-  class Player
+  class Enemy
   {
     public Texture2D Texture;
     public Vector2 Position;
     public bool Active;
     public int Health;
-    
+
     public int Width
     {
       get { return Texture.Width; }
     }
-    
+
     public int Height
     {
       get { return Texture.Height; }
@@ -27,7 +27,7 @@ namespace SpaceBattle
       Active = true;
       Health = 100;
     }
-    
+
     public void Update()
     {
     }
