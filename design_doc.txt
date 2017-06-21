@@ -1,7 +1,9 @@
 Planeetat hubeina
 
 todo:
+    X Levelikohtainen kamera
     LoadContentin fiksuntaminen
+        levelkohtainen spritebatch
         esim asteroidin contentin lataaminen
         päällekkäinen assettien latailu
             texturet esim static muuttujiksi?
@@ -13,7 +15,6 @@ todo:
 		esim quadtree tyyppinen ratkaisu jos tulee suorituskyky ongelmia
 	levelin vaihto
 	liike
-	kamera
     
     
 Speksiä:

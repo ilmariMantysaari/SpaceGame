@@ -33,6 +33,7 @@ namespace SpaceBattle
       player = new Player();
       camera = new Camera(GraphicsDevice.Viewport);
       level = new Level1(spriteBatch, player);
+      camera = level.camera;
       base.Initialize();
     }
     
@@ -54,6 +55,7 @@ namespace SpaceBattle
     {
       //latausnäyttö
         //esim kameran paikkaa vaihtamalla
+      //vaihda kamera
       //unload nyk level
       //load uus
       //uuden käynnistys

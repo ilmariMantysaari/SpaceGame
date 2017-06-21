@@ -25,6 +25,11 @@ namespace SpaceBattle.GameObjects
       Texture = SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\ship");
     }
 
+    public override void Draw(SpriteBatch batch)
+    {
+      batch.Draw(Texture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+    }
+
     public override void Update()
     {
 

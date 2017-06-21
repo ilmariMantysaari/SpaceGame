@@ -20,15 +20,16 @@ namespace SpaceBattle.GameObjects.Levels
       //this.content = new Microsoft.Xna.Framework.Content.ContentManager();
 
       this.player = player;
-      var playerPosition = new Vector2(SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.X,
-        SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Y + SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-      player.Position = playerPosition;
-
+      this.player.Position = Vector2.Zero;
       SetupContent();
-
       LoadContent();
     }
-    
+
+    public override void Update()
+    {
+      base.Update();
+    }
+
     public override void Draw(SpriteBatch batch)
     {
       base.Draw(batch);

@@ -18,11 +18,13 @@ namespace SpaceBattle.GameObjects
     protected Player player;
 
     protected Texture2D background;
+    public Camera camera;
 
     public Level(SpriteBatch batch)
     {
       //TODO level kohtainen contentmanager
       this.batch = batch;
+      this.camera = new Camera(SpaceBattle.GameInstance.GraphicsDevice.Viewport);
       items = new List<SceneItem>();
     }
 
@@ -36,6 +38,7 @@ namespace SpaceBattle.GameObjects
     
     public virtual void Update()
     {
+      camera.Update();
       foreach (var item in items)
       {
         item.Update();
@@ -47,7 +50,6 @@ namespace SpaceBattle.GameObjects
     {
       //TODO: taustan piirto
       
-
       foreach (var item in items)
       {
         item.Draw(batch);
