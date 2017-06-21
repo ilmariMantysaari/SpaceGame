@@ -42,5 +42,7 @@ Ideat
 		-myös asteroidit ym voivat olla magneettisia, harhauttavat ohjusta
 	-ydinpommi moottori
 		-antaa yhden ison nopean sysäyksen kerrallaan
-		
+	-haulikkotyylinen ase
+    -huonosti ohjautuvat halvat r<ketit
+        -esim painovoimaa kohti, tekee hienoja lentoratoja jos saa toimiin oikein
 		git remote set-url origin https://github.com/ilmariMantysaari/SpaceGame.git

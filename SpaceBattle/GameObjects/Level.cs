@@ -17,6 +17,8 @@ namespace SpaceBattle.GameObjects
     protected SpriteBatch batch;
     protected Player player;
 
+    protected Texture2D background;
+
     public Level(SpriteBatch batch)
     {
       //TODO level kohtainen contentmanager
@@ -32,9 +34,6 @@ namespace SpaceBattle.GameObjects
       }
     }
     
-    /// <summary>
-    /// Updates all items in level
-    /// </summary>
     public virtual void Update()
     {
       foreach (var item in items)
@@ -47,6 +46,7 @@ namespace SpaceBattle.GameObjects
     public virtual void Draw(SpriteBatch batch)
     {
       //TODO: taustan piirto
+      
 
       foreach (var item in items)
       {

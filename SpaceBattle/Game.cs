@@ -15,6 +15,7 @@ namespace SpaceBattle
 
     public Player player;
     public Level level;
+    public Camera camera;
 
     public static SpaceBattle GameInstance{ get; private set; }
 
@@ -26,13 +27,11 @@ namespace SpaceBattle
       //this last
       GameInstance = this;
     }
-
-    /// <summary>
-    /// Initialization
-    /// </summary>
+    
     protected override void Initialize()
     {
       player = new Player();
+      camera = new Camera(GraphicsDevice.Viewport);
       level = new Level1(spriteBatch, player);
       base.Initialize();
     }
@@ -42,8 +41,7 @@ namespace SpaceBattle
       //TODO: lataa conffi tiedosto
 
       spriteBatch = new SpriteBatch(GraphicsDevice);
-      Console.WriteLine(GraphicsDevice.Viewport.TitleSafeArea);
-      //Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+      //Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.Height/2, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
       player.LoadContent();
       level.LoadContent();
     }
@@ -55,6 +53,7 @@ namespace SpaceBattle
     public void ChangeLevel(int levelIndex)
     {
       //latausnäyttö
+        //esim kameran paikkaa vaihtamalla
       //unload nyk level
       //load uus
       //uuden käynnistys
@@ -63,9 +62,15 @@ namespace SpaceBattle
     protected override void Update(GameTime gameTime)
     {
       if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+      {
         Exit();
-
-      // TODO: Add your update logic here
+      }
+      if (Keyboard.GetState().IsKeyDown(Keys.T))
+      {
+        camera.Position = Vector2.Zero;
+      }
+      
+      camera.Update();
 
       base.Update(gameTime);
     }
@@ -73,7 +78,7 @@ namespace SpaceBattle
     protected override void Draw(GameTime gameTime)
     {
       GraphicsDevice.Clear(Color.CornflowerBlue);
-      spriteBatch.Begin(samplerState : SamplerState.PointClamp);
+      spriteBatch.Begin(samplerState : SamplerState.PointClamp, transformMatrix : camera.Transform);
 
       // Draw the Player
       level.Draw(spriteBatch);

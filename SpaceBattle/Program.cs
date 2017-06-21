@@ -14,7 +14,9 @@ namespace SpaceBattle
     static void Main()
     {
       using (var game = new SpaceBattle())
+      {
         game.Run();
+      }
     }
   }
 }

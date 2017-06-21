@@ -9,6 +9,8 @@ namespace SpaceBattle.GameObjects
     
     public bool Active;
     public int Health;
+    public Weapon Weapon;
+    public float Speed;
 
     protected Texture2D smallShip;
 
@@ -25,7 +27,7 @@ namespace SpaceBattle.GameObjects
 
     public override void Update()
     {
-      
+
     }
 
   }

@@ -26,6 +26,8 @@ namespace SpaceBattle.GameObjects.Levels
     
     protected int width;
     protected int height;
+    protected bool destructable;
+    protected int hp;
 
     public Asteroid(AsteroidType type)
     {
@@ -56,7 +58,6 @@ namespace SpaceBattle.GameObjects.Levels
           this.width = this.height = 100;
           break;
       }
-      
     }
 
     public Asteroid(int width, int height)
