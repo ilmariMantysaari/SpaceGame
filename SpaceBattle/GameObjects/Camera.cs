@@ -9,13 +9,13 @@ namespace SpaceBattle
   {
     public float Zoom { get; set; }
     public Vector2 Position { get; set; }
+    public Rectangle Bounds { get; set; }
     public Matrix Transform { get; protected set; }
     public Single Rotation { get; protected set; }
 
-    //private float currentMouseWheelValue, previousMouseWheelValue, zoom, previousZoom;
-
     public Camera(Viewport viewport)
     {
+      Bounds = viewport.Bounds;
       Rotation = 0f;
       Zoom = 0.75f;
       Position = Vector2.Zero;
@@ -26,39 +26,43 @@ namespace SpaceBattle
       UpdateMatrix();
 
       Vector2 movement = Vector2.Zero;
-      int moveSpeed = 15;
 
+      //TODO: Playerin nopeus ja kääntyvyys
+      int moveSpeed = 10;
+      float rotationSpeed = 0.02f;
+      
       if (Keyboard.GetState().IsKeyDown(Keys.W))
       {
-        movement.Y = -moveSpeed;
+        movement.X = Transform.Up.X * moveSpeed;
+        movement.Y = Transform.Up.Y * -moveSpeed;
       }
       if (Keyboard.GetState().IsKeyDown(Keys.S))
       {
-        movement.Y = moveSpeed;
+        movement.X = Transform.Down.X * moveSpeed;
+        movement.Y = Transform.Down.Y * -moveSpeed;
       }
       if (Keyboard.GetState().IsKeyDown(Keys.A))
       {
-        movement.X = -moveSpeed;
+        this.Rotation -= rotationSpeed;
+        this.Rotation %= (2 * (float)Math.PI);
       }
       if (Keyboard.GetState().IsKeyDown(Keys.D))
       {
-        movement.X = moveSpeed;
-      }
-      if (Keyboard.GetState().IsKeyDown(Keys.E))
-      {
-        this.Rotation += 0.002f;
+        this.Rotation += rotationSpeed;
+        this.Rotation %= (2 * (float)Math.PI);
       }
 
       Vector2 newPosition = Position + movement;
       Position = newPosition;
     }
-    
+
     private void UpdateMatrix()
     {
+      var origin = new Vector2(Bounds.Width / 2, Bounds.Height / 2);
       this.Transform = Matrix.CreateTranslation(new Vector3(-Position, 0.0f)) *
-       //Matrix.CreateTranslation(new Vector3(-Origin, 0.0f)) *
-       Matrix.CreateRotationZ(Rotation);
-       //Matrix.CreateScale(Zoom, Zoom, 1) * Matrix.CreateTranslation(new Vector3(Origin, 0.0f));
+          Matrix.CreateTranslation(new Vector3(-origin, 0.0f)) *
+          Matrix.CreateRotationZ(Rotation) *
+          Matrix.CreateScale(Zoom, Zoom, 1) * Matrix.CreateTranslation(new Vector3(origin, 0.0f));
     }
   }
 }
