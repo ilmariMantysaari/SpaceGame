@@ -12,6 +12,7 @@ namespace SpaceBattle
     public Rectangle Bounds { get; set; }
     public Matrix Transform { get; protected set; }
     public Single Rotation { get; protected set; }
+    public Vector2 Center { get; protected set; }
 
     public Camera(Viewport viewport)
     {
@@ -19,6 +20,7 @@ namespace SpaceBattle
       Rotation = 0f;
       Zoom = 0.75f;
       Position = Vector2.Zero;
+      Center = new Vector2(Bounds.Width / 2, Bounds.Height / 2);
     }
 
     public void Update()
@@ -29,7 +31,7 @@ namespace SpaceBattle
 
       //TODO: Playerin nopeus ja kääntyvyys
       int moveSpeed = 10;
-      float rotationSpeed = 0.02f;
+      float rotationSpeed = 0.04f;
       
       if (Keyboard.GetState().IsKeyDown(Keys.W))
       {
@@ -62,7 +64,7 @@ namespace SpaceBattle
       this.Transform = Matrix.CreateTranslation(new Vector3(-Position, 0.0f)) *
           //Matrix.CreateTranslation(new Vector3(-origin, 0.0f)) *
           Matrix.CreateRotationZ(Rotation) *
-          Matrix.CreateScale(Zoom, Zoom, 1) * Matrix.CreateTranslation(new Vector3(origin, 0.0f));
+          /*Matrix.CreateScale(Zoom, Zoom, 1) **/ Matrix.CreateTranslation(new Vector3(origin, 0.0f));
     }
   }
 }

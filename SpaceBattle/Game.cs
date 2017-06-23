@@ -79,13 +79,10 @@ namespace SpaceBattle
     
     protected override void Draw(GameTime gameTime)
     {
-      GraphicsDevice.Clear(Color.CornflowerBlue);
-      spriteBatch.Begin(samplerState : SamplerState.PointClamp, transformMatrix : camera.Transform);
-
-      // Draw the Player
+      GraphicsDevice.Clear(Color.Black);
+      
       level.Draw(spriteBatch);
-
-      spriteBatch.End();
+      
       base.Draw(gameTime);
     }
   }

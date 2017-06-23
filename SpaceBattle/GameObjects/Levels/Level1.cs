@@ -20,7 +20,7 @@ namespace SpaceBattle.GameObjects.Levels
       //this.content = new Microsoft.Xna.Framework.Content.ContentManager();
 
       this.player = player;
-      this.player.Position = Vector2.Zero;
+      this.player.Position = this.camera.Center;
       SetupContent();
       LoadContent();
     }
@@ -30,28 +30,21 @@ namespace SpaceBattle.GameObjects.Levels
       base.Update();
     }
 
-    public override void Draw(SpriteBatch batch)
-    {
-      base.Draw(batch);
-      player.Draw(batch);
-    }
-
     private void SetupContent()
     {
       var asteroid = new Asteroid(AsteroidType.Small);
-      asteroid.Position = new Vector2(SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.X + 100,
-        SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Y + SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+      asteroid.Position = Vector2.Zero;
+      asteroid.Scale = 0.5f;
+
       var asteroid2 = new Asteroid(AsteroidType.Big);
-      asteroid2.Position = new Vector2(SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.X + 200,
-        SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Y + SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+      asteroid2.Position = new Vector2(200, 200);
 
       var asteroid3 = new Asteroid(AsteroidType.Huge);
-      asteroid3.Position = new Vector2(SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.X + 300,
-        SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Y + SpaceBattle.GameInstance.GraphicsDevice.Viewport.TitleSafeArea.Height / 2 - 500);
+      asteroid3.Position = new Vector2(300, 200);
 
-      this.items.Add(asteroid);
-      this.items.Add(asteroid2);
-      this.items.Add(asteroid3);
+      this.mapObjects.Add(asteroid);
+      this.mapObjects.Add(asteroid2);
+      this.mapObjects.Add(asteroid3);
     }
   }
 }

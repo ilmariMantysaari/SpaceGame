@@ -12,7 +12,7 @@ namespace SpaceBattle.GameObjects
   public abstract class Level
   {
     //contains all items in level
-    protected List<SceneItem> items;
+    protected List<SceneItem> mapObjects;
     protected ContentManager content;
     protected SpriteBatch batch;
     protected Player player;
@@ -25,12 +25,12 @@ namespace SpaceBattle.GameObjects
       //TODO level kohtainen contentmanager
       this.batch = batch;
       this.camera = new Camera(SpaceBattle.GameInstance.GraphicsDevice.Viewport);
-      items = new List<SceneItem>();
+      mapObjects = new List<SceneItem>();
     }
 
     public virtual void LoadContent()
     {
-      foreach (var item in items)
+      foreach (var item in mapObjects)
       {
         item.LoadContent();
       }
@@ -39,7 +39,7 @@ namespace SpaceBattle.GameObjects
     public virtual void Update()
     {
       camera.Update();
-      foreach (var item in items)
+      foreach (var item in mapObjects)
       {
         item.Update();
       }
@@ -49,11 +49,21 @@ namespace SpaceBattle.GameObjects
     public virtual void Draw(SpriteBatch batch)
     {
       //TODO: taustan piirto
-      
-      foreach (var item in items)
+
+      //Draw objects that are positioned relative to screen
+      batch.Begin(samplerState: SamplerState.PointClamp);
+
+        player.Draw(batch);
+
+      batch.End();
+
+      //Draw objects relative to map
+      batch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera.Transform);
+      foreach (var item in mapObjects)
       {
         item.Draw(batch);
       }
+      batch.End();
     }
 
   }

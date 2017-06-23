@@ -2,17 +2,31 @@ Planeetat hubeina
 
 todo:
     X Levelikohtainen kamera
+	X Absoluuttinen piirto playerille, hudille ym.
+	collision
+		mahdollisesti oma luokka collisionboxille jotta saa erilaisia muotoja
+		esim quadtree tyyppinen ratkaisu jos tulee suorituskyky ongelmia
+		
+	Inputin käsittelyyn luokka
+	
+	Tähdet
+	
+	liikkumisen parantelu avaruusmaisemmaksi
+		esim kiihdytys ja hidastus
+	Spritejen kompositio
     LoadContentin fiksuntaminen
         levelkohtainen spritebatch
         esim asteroidin contentin lataaminen
         päällekkäinen assettien latailu
             texturet esim static muuttujiksi?
         Yleiset assetit, ei latausta joka levelin kohdalla
-	vihollinen
+	viholliset
+	vihollisten tekoäly
+		eri tyyppejä
+			passiivinen liike
+			hyökkäysmode
 	ammus
-	collision
-		mahdollisesti oma luokka collisionboxille jotta saa erilaisia muotoja
-		esim quadtree tyyppinen ratkaisu jos tulee suorituskyky ongelmia
+	
 	levelin vaihto
 	liike
     
@@ -39,6 +53,9 @@ Hud
 	-piirretään kaiken muun päälle
 	
 Ideat
+	-perusase
+		-esim pieniä laserpulsseja, nopeasti
+			-tähän esim kehityksenä tulinopeutta ym.
 	-magneettiinen hakeutuva ammus
 		-myös asteroidit ym voivat olla magneettisia, harhauttavat ohjusta
 	-ydinpommi moottori
@@ -47,3 +64,8 @@ Ideat
     -huonosti ohjautuvat halvat r<ketit
         -esim painovoimaa kohti, tekee hienoja lentoratoja jos saa toimiin oikein
 		git remote set-url origin https://github.com/ilmariMantysaari/SpaceGame.git
+	-suojakilpi
+	-sähkömiina
+	-barrel roll
+	-laser
+		-yhtäjaksoinen, korvaa vaikka perusaseen

@@ -1,30 +1,28 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SpaceBattle.GameObjects
 {
-  public class Enemy
+  public class Enemy : SceneItem
   {
-    public Texture2D Texture;
-    public Vector2 Position;
     public bool Active;
     public int Health;
+    public AI Intelligence;
     
-    public void Initialize(Texture2D texture, Vector2 position)
+    public Enemy()
     {
-      Texture = texture;
-      Position = position;
       Active = true;
       Health = 100;
     }
 
-    public void Update()
+    public override void LoadContent()
     {
+      throw new NotImplementedException();
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public override void Update()
     {
-      spriteBatch.Draw(Texture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
     }
   }
 }
