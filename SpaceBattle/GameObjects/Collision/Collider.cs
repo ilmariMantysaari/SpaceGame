@@ -18,7 +18,7 @@ namespace SpaceBattle.GameObjects.Collision
     {
     }
 
-    public abstract bool Collision(Collider collider);
+    public abstract bool Collision(ICollidable collidable);
 
     /*
     public Collider(List<Rectangle> rectangles)

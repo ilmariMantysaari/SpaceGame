@@ -10,8 +10,6 @@ namespace SpaceBattle.GameObjects
   public abstract class SceneItem
   {
     protected Texture2D Texture;
-    public bool Collidable;
-    public Collider Collider;
     public Vector2 Position;
     public Vector2 Direction;
     public float Scale;
@@ -28,14 +26,5 @@ namespace SpaceBattle.GameObjects
     //updates the state of the sceneitem
     public abstract void Update();
 
-    public virtual bool Collision(SceneItem item)
-    {
-      if (!Collidable)
-      {
-        return false;
-      }
-
-      return this.Collider.Collision(item.Collider);
-    }
   }
 }

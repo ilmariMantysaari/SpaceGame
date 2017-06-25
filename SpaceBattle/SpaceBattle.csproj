@@ -48,6 +48,8 @@
     <Compile Include="GameObjects\AI.cs" />
     <Compile Include="GameObjects\AsteroidField.cs" />
     <Compile Include="GameObjects\Camera.cs" />
+    <Compile Include="GameObjects\Collision\CollisionDetector.cs" />
+    <Compile Include="GameObjects\Collision\ICollidable.cs" />
     <Compile Include="GameObjects\Collision\PointCollider.cs" />
     <Compile Include="GameObjects\Collision\PolygonCollider.cs" />
     <Compile Include="GameObjects\Collision\RectangleCollider.cs" />

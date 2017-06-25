@@ -8,7 +8,7 @@ namespace SpaceBattle.GameObjects.Collision
 {
   public class PointCollider : Collider
   {
-    public override bool Collision(Collider collider)
+    public override bool Collision(ICollidable collider)
     {
       throw new NotImplementedException();
     }

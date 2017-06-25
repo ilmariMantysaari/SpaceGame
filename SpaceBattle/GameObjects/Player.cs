@@ -6,7 +6,7 @@ using SpaceBattle.GameObjects.Collision;
 
 namespace SpaceBattle.GameObjects
 {
-  public class Player : SceneItem
+  public class Player : SceneItem, ICollidable
   {
     
     public bool Active;
@@ -16,6 +16,8 @@ namespace SpaceBattle.GameObjects
     protected Texture2D exhaust;
 
     protected Texture2D smallShip;
+
+    public Collider Collider{ get; set; }
 
     public Player()
     {
@@ -44,5 +46,9 @@ namespace SpaceBattle.GameObjects
 
     }
 
+    public void OnCollision()
+    {
+      
+    }
   }
 }
