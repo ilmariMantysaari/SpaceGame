@@ -6,9 +6,25 @@ using System.Threading.Tasks;
 
 namespace SpaceBattle.GameObjects.Collision
 {
-  public class PointCollider : Collider
+
+  public class PointCollider : ColliderArea
   {
-    public override bool Collision(ICollidable collider)
+    /*
+    public override bool Intersect(BoxCollider rec)
+    {
+      throw new NotImplementedException();
+    }
+
+    public override bool Intersect(CircleCollider circle)
+    {
+      throw new NotImplementedException();
+    }
+
+    public override bool Intersect(PointCollider point)
+    {
+      throw new NotImplementedException();
+    }*/
+    public override bool Intersect(ColliderArea collider)
     {
       throw new NotImplementedException();
     }

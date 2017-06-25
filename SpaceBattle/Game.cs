@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using SpaceBattle.GameObjects;
 using SpaceBattle.GameObjects.Levels;
 using System;
+using System.Diagnostics;
 
 namespace SpaceBattle
 {
@@ -23,7 +24,7 @@ namespace SpaceBattle
     {
       graphics = new GraphicsDeviceManager(this);
       Content.RootDirectory = "Content";
-
+      Debug.WriteLine("GAME");
       //this last
       GameInstance = this;
     }
@@ -73,7 +74,7 @@ namespace SpaceBattle
       }
       
       camera.Update();
-
+      level.Update();
       base.Update(gameTime);
     }
     

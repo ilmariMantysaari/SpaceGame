@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SpaceBattle.GameObjects.Collision;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +14,10 @@ namespace SpaceBattle.GameObjects
   public abstract class Level
   {
     //contains all collidable and interactable items in level
-    protected List<SceneItem> mapObjects;
+    protected List<MapObject> mapObjects;
     //contains items that are just for decoration
     //TODO: class for decorations
-    protected List<Object> decorations;
+    //protected List<Decoration> decorations;
 
     //TODO: HUD
     //protected HUD hud;
@@ -33,7 +34,7 @@ namespace SpaceBattle.GameObjects
       //TODO level kohtainen contentmanager
       this.batch = batch;
       this.camera = new Camera(SpaceBattle.GameInstance.GraphicsDevice.Viewport);
-      mapObjects = new List<SceneItem>();
+      mapObjects = new List<MapObject>();
     }
 
     public virtual void LoadContent()
@@ -42,24 +43,23 @@ namespace SpaceBattle.GameObjects
       {
         item.LoadContent();
       }
+      /*
       foreach (var decor in decorations)
       {
         //decorations.LoadContent();
-      }
+      }*/
     }
     
     public virtual void Update()
     {
       camera.Update();
-
       CollisionDetector.DetectCollisions(mapObjects);
 
+      Debug.WriteLine("Clear");
       foreach (var item in mapObjects)
       {
         item.Update();
       }
-
-      //HUD 
     }
 
     //Draws eveything on screen

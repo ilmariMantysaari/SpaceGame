@@ -32,16 +32,19 @@ namespace SpaceBattle.GameObjects.Levels
 
     private void SetupContent()
     {
-      var asteroid = new Asteroid(AsteroidType.Small);
-      asteroid.Position = Vector2.Zero;
-      asteroid.Scale = 0.5f;
-
-      var asteroid2 = new Asteroid(AsteroidType.Big);
-      asteroid2.Position = new Vector2(200, 200);
-
-      var asteroid3 = new Asteroid(AsteroidType.Huge);
-      asteroid3.Position = new Vector2(300, 200);
-
+      var asteroid = new Asteroid(AsteroidType.Small)
+        {
+          Position = Vector2.Zero,
+          Scale = 0.5f
+        };
+      var asteroid2 = new Asteroid(AsteroidType.Big)
+        {
+          Position = new Vector2(200, 200)
+        };
+      var asteroid3 = new Asteroid(AsteroidType.Big)
+        {
+          Position = new Vector2(300, -200)
+        };
       this.mapObjects.Add(asteroid);
       this.mapObjects.Add(asteroid2);
       this.mapObjects.Add(asteroid3);

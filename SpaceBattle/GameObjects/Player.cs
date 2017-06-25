@@ -24,9 +24,10 @@ namespace SpaceBattle.GameObjects
       Active = true;
       Health = 100;
       Scale = 0.75f;
-      var collisionBoxes = new List<Rectangle>();
-      collisionBoxes.Add(new Rectangle());
-      Collider = new RectangleCollider();
+      var collisionBoxes = new List<ColliderArea>();
+      //TODO: tämä
+      collisionBoxes.Add(new BoxCollider(0,0,100,100));
+      Collider = new Collider(collisionBoxes);
     }
 
     public override void LoadContent()
@@ -46,9 +47,9 @@ namespace SpaceBattle.GameObjects
 
     }
 
-    public void OnCollision()
+    public void OnCollision(ICollidable collider)
     {
-      
+      throw new NotImplementedException();
     }
   }
 }

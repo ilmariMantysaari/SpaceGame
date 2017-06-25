@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SpaceBattle.GameObjects.Collision;
+using System.Diagnostics;
 
 namespace SpaceBattle.GameObjects.Levels
 {
@@ -14,7 +12,7 @@ namespace SpaceBattle.GameObjects.Levels
     Tiny, Small, Medium, Big, Large, Huge, Immense
   }
 
-  public class Asteroid : SceneItem
+  public class Asteroid : MapObject
   {
     //TODO: satunnaisen tekstuurin lataus
     //TODO: pyörimisliike
@@ -24,46 +22,46 @@ namespace SpaceBattle.GameObjects.Levels
     protected static Texture2D asteroidTexture2;
     protected static Texture2D asteroidTexture3;
     
-    protected int width;
-    protected int height;
+    protected int radius;
     protected bool destructable;
     protected int hp;
 
     public Asteroid(AsteroidType type)
     {
+      Collider = new Collider(new CircleCollider(Position, radius));
+
       switch (type)
       {
         case AsteroidType.Tiny:
-          this.width = this.height = 10;
+          this.radius = 10;
           break;
         case AsteroidType.Small:
-          this.width = this.height = 50;
+          this.radius = 50;
           break;
         case AsteroidType.Medium:
-          this.width = this.height = 100;
+          this.radius = 100;
           break;
         case AsteroidType.Big:
-          this.width = this.height = 250;
+          this.radius = 250;
           break;
         case AsteroidType.Large:
-          this.width = this.height = 500;
+          this.radius = 500;
           break;
         case AsteroidType.Huge:
-          this.width = this.height = 1000;
+          this.radius = 1000;
           break;
         case AsteroidType.Immense:
-          this.width = this.height = 5000;
+          this.radius = 5000;
           break;
         default:
-          this.width = this.height = 100;
+          this.radius = 100;
           break;
       }
     }
 
-    public Asteroid(int width, int height)
+    public Asteroid(int radius)
     {
-      this.width = width;
-      this.height = height;
+      this.radius = radius;
     }
 
     public override void LoadContent()
@@ -81,7 +79,7 @@ namespace SpaceBattle.GameObjects.Levels
 
     public override void Draw(SpriteBatch batch)
     {
-      Rectangle dest = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.width, this.height);
+      Rectangle dest = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.radius, this.radius);
       batch.Draw(Texture, dest, Color.White);
     }
 
@@ -89,6 +87,11 @@ namespace SpaceBattle.GameObjects.Levels
     {
       //pyöritä
       //mahdollinen liike
+    }
+
+    public override void OnCollision(ICollidable collider)
+    {
+      Debug.WriteLine("Asteroid collision");
     }
   }
 }

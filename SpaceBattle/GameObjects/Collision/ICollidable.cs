@@ -19,6 +19,6 @@ namespace SpaceBattle.GameObjects.Collision
     /// Called when collision happens
     /// </summary>
     /// <param name="collider">the object this collidable colides with</param>
-    void OnCollision(Collider collider);
+    void OnCollision(ICollidable collider);
   }
 }

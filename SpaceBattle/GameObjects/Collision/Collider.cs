@@ -11,35 +11,39 @@ namespace SpaceBattle.GameObjects.Collision
   /*
     Superclass to all different types of colliders
   */
-  public abstract class Collider
+  public class Collider
   {
 
-    public Collider()
+    //TODO: vain yhden muodon collider
+
+    public List<ColliderArea> Area;
+
+    public Collider(List<ColliderArea> colliders)
     {
+      this.Area = colliders;
     }
 
-    public abstract bool Collision(ICollidable collidable);
-
-    /*
-    public Collider(List<Rectangle> rectangles)
+    public Collider(ColliderArea collider)
     {
-      this.Colliders = rectangles;
+      this.Area = new List<ColliderArea>()
+        {
+          collider
+        };
     }
-    
+
     public virtual bool Collision(Collider collider)
     {
-      foreach (var c in this.Colliders)
+      foreach (var shape in Area)
       {
-        foreach (var d in collider.Colliders)
+        foreach (var shape2 in collider.Area)
         {
-          if (c.Intersects(d))
+          if (shape.Intersect(shape2))
           {
-            Debug.WriteLine("Collision");
             return true;
           }
         }
       }
       return false;
-    }*/
+    }
   }
 }

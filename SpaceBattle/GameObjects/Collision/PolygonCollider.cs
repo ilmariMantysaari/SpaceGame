@@ -8,20 +8,10 @@ using System.Threading.Tasks;
 namespace SpaceBattle.GameObjects.Collision
 {
   /*
-   At the moment just a series of rectangles
-   */
+   TODO: tästä parempi collider luokka, sallii kaikenlaiset muodot
+   *//*
   public class PolygonCollider : Collider
   {
-    public List<Rectangle> area;
-
-    public PolygonCollider(List<Rectangle> area)
-    {
-      this.area = area;
-    }
-
-    public override bool Collision(ICollidable collider)
-    {
-      throw new NotImplementedException();
-    }
-  }
+   
+  }*/
 }

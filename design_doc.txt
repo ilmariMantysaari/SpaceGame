@@ -4,6 +4,7 @@ todo:
     X Levelikohtainen kamera
 	X Absoluuttinen piirto playerille, hudille ym.
 	collision
+        playerin ja asteroidin collision boxit
 		mahdollisesti oma luokka collisionboxille jotta saa erilaisia muotoja
 		esim quadtree tyyppinen ratkaisu jos tulee suorituskyky ongelmia
 		
