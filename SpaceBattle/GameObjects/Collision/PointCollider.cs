@@ -7,24 +7,23 @@ using System.Threading.Tasks;
 namespace SpaceBattle.GameObjects.Collision
 {
 
-  public class PointCollider : ColliderArea
+  public class PointCollider : Collider
   {
-    /*
-    public override bool Intersect(BoxCollider rec)
+    public PointCollider(MapObject parent) : base(parent)
+    {
+    }
+    
+    public override bool IntersectBox(BoxCollider rec)
     {
       throw new NotImplementedException();
     }
 
-    public override bool Intersect(CircleCollider circle)
+    public override bool IntersectCircle(CircleCollider circle)
     {
       throw new NotImplementedException();
     }
 
-    public override bool Intersect(PointCollider point)
-    {
-      throw new NotImplementedException();
-    }*/
-    public override bool Intersect(ColliderArea collider)
+    public override bool IntersectPoint(PointCollider point)
     {
       throw new NotImplementedException();
     }

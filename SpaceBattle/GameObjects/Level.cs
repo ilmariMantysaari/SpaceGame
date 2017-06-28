@@ -14,10 +14,9 @@ namespace SpaceBattle.GameObjects
   public abstract class Level
   {
     //contains all collidable and interactable items in level
-    protected List<MapObject> mapObjects;
-    //contains items that are just for decoration
-    //TODO: class for decorations
-    //protected List<Decoration> decorations;
+    protected List<MapObject> Colliders;
+    //contains drawn items
+    protected List<SceneItem> Drawn;
 
     //TODO: HUD
     //protected HUD hud;
@@ -31,32 +30,38 @@ namespace SpaceBattle.GameObjects
 
     public Level(SpriteBatch batch)
     {
+
+    }
+
+    public Level(SpriteBatch batch, Player player)
+    {
       //TODO level kohtainen contentmanager
       this.batch = batch;
       this.camera = new Camera(SpaceBattle.GameInstance.GraphicsDevice.Viewport);
-      mapObjects = new List<MapObject>();
+
+      this.player = player;
+      this.player.DrawPosition = this.camera.Center;
+      this.player.Position = this.camera.Position + this.camera.Center;
+      Colliders = new List<MapObject>();
+      Colliders.Add(player);
+      Drawn = new List<SceneItem>();
     }
 
     public virtual void LoadContent()
     {
-      foreach (var item in mapObjects)
+      foreach (var item in Drawn)
       {
         item.LoadContent();
       }
-      /*
-      foreach (var decor in decorations)
-      {
-        //decorations.LoadContent();
-      }*/
     }
     
     public virtual void Update()
     {
-      camera.Update();
-      CollisionDetector.DetectCollisions(mapObjects);
+      player.Position = camera.Position;
+      CollisionDetector.DetectCollisions(Colliders);
 
       Debug.WriteLine("Clear");
-      foreach (var item in mapObjects)
+      foreach (var item in Colliders)
       {
         item.Update();
       }
@@ -77,12 +82,20 @@ namespace SpaceBattle.GameObjects
 
       //Draw objects relative to map
       batch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera.Transform);
-      foreach (var item in mapObjects)
+      foreach (var item in Drawn)
       {
         item.Draw(batch);
       }
       batch.End();
     }
 
+    public virtual void AddItem(SceneItem item)
+    {
+      if (item.GetType().IsSubclassOf(typeof(MapObject)))
+      {
+        Colliders.Add((MapObject)item);
+      }
+      Drawn.Add(item);
+    }
   }
 }

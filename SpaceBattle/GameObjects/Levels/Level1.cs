@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,14 @@ namespace SpaceBattle.GameObjects.Levels
   public class Level1 : Level
   {
 
-    public Level1(SpriteBatch batch, Player player) : base(batch)
+    public Level1(SpriteBatch batch, Player player) : base(batch, player)
     {
       //set player coordinates
       //create items on map
 
       //TODO CONtent manager kuntoon ja joka levelille oma content manager
       //this.content = new Microsoft.Xna.Framework.Content.ContentManager();
-
-      this.player = player;
-      this.player.Position = this.camera.Center;
+      
       SetupContent();
       LoadContent();
     }
@@ -45,9 +44,40 @@ namespace SpaceBattle.GameObjects.Levels
         {
           Position = new Vector2(300, -200)
         };
-      this.mapObjects.Add(asteroid);
-      this.mapObjects.Add(asteroid2);
-      this.mapObjects.Add(asteroid3);
+      /*
+      for (int i = 0; i < 100; i++)
+      {
+        AddItem(
+          new Asteroid(AsteroidType.Small)
+          {
+            Position = new Vector2(400 + i * 100, 400 + i * 100)
+          }
+          );
+      }
+
+      for (int i = 0; i < 100; i++)
+      {
+        AddItem(
+          new Asteroid(AsteroidType.Small)
+          {
+            Position = new Vector2(400 + i * 100, i * -100)
+          }
+          );
+      }
+
+      for (int i = 0; i < 100; i++)
+      {
+        AddItem(
+          new Asteroid(AsteroidType.Small)
+          {
+            Position = new Vector2(400 + i * 100, 400 + i * 100)
+          }
+          );
+      }*/
+
+      //AddItem(asteroid);
+      //AddItem(asteroid2);
+      AddItem(asteroid3);
     }
   }
 }

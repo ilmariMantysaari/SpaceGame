@@ -8,63 +8,37 @@ using System.Threading.Tasks;
 
 namespace SpaceBattle.GameObjects.Collision
 {
-  public class CircleCollider : ColliderArea
+  public class CircleCollider : Collider
   {
-    public Vector2 Center;
-
     public float Radius;
-
-    public CircleCollider(Vector2 position, float radius)
+    public CircleCollider(MapObject parent, float radius): base(parent)
     {
-      Center = position;
       Radius = radius;
     }
-
-    public override bool Intersect(ColliderArea collider)
-    {
-      if(collider.GetType() == typeof(BoxCollider))
-      {
-        return IntersectBox((BoxCollider)collider);
-      }
-      else if (collider.GetType() == typeof(CircleCollider))
-      {
-        return IntersectCircle((CircleCollider)collider);
-      }
-      else if (collider.GetType() == typeof(PointCollider))
-      {
-        throw new NotImplementedException();
-      }
-      else
-      {
-        throw new NotImplementedException();
-      }
-    }
     
-    private bool IntersectBox(BoxCollider rec)
-    {
-      //Debug.WriteLine("Circle -> Box");
-      var area = rec.Rectangle;
-      Vector2 v = new Vector2(MathHelper.Clamp(Center.X, area.Left, area.Right),
-                            MathHelper.Clamp(Center.Y, area.Top, area.Bottom));
-      Vector2 direction = Center - v;
+    public override bool IntersectBox(BoxCollider rec)
+    {/*
+      var area = new Rectangle((int)rec.Parent.Position.X, (int)rec.Parent.Position.Y, rec.Width, rec.Height);
+      Vector2 v = new Vector2(MathHelper.Clamp(Parent.Origin().X, area.Left, area.Right),
+                              MathHelper.Clamp(Parent.Origin().Y, area.Top, area.Bottom));
+      Vector2 direction = this.Parent.Origin() - v;
       float squared = direction.LengthSquared();
-
-      return ((squared > 0) && (squared < Radius * Radius));
+      */
+     // return ((squared > 0) && (squared < Radius * Radius));
+      return false;
     }
 
-    private bool IntersectCircle(CircleCollider circle)
+    public override bool IntersectCircle(CircleCollider circle)
     {
-      //Debug.WriteLine("Circle -> Circle");
       var rad = this.Radius + circle.Radius;
-      var distX = this.Center.X - circle.Center.X;
-      var distY = this.Center.Y - circle.Center.Y;
-      Debug.WriteLine(this.Radius + ",  " + circle.Radius);
-
-      Debug.WriteLine(distX + ", " + distY + ", " + rad);
+      var pos = this.Parent.Origin() + this.Parent.Position;
+      var distX = pos.X - pos.X;
+      var distY = pos.Y - pos.Y;
+      
       return distX * distX + distY * distY <= rad * rad;
     }
 
-    private bool IntersectPoint(PointCollider point)
+    public override bool IntersectPoint(PointCollider point)
     {
       throw new NotImplementedException();
     }

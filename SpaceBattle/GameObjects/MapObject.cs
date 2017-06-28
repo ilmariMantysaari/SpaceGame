@@ -12,5 +12,6 @@ namespace SpaceBattle.GameObjects
     public Collider Collider { get; set; }
 
     public abstract void OnCollision(ICollidable collider);
+    
   }
 }

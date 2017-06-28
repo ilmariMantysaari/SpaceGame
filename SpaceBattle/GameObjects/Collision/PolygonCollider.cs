@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace SpaceBattle.GameObjects.Collision
 {
   /*
-   TODO: tästä parempi collider luokka, sallii kaikenlaiset muodot
+   Experimental polygonCollider class
+   Basically just a list of rectangles
    *//*
   public class PolygonCollider : Collider
   {

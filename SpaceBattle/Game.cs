@@ -17,6 +17,7 @@ namespace SpaceBattle
     public Player player;
     public Level level;
     public Camera camera;
+    public InputHandler input;
 
     public static SpaceBattle GameInstance{ get; private set; }
 
@@ -33,6 +34,7 @@ namespace SpaceBattle
     {
       player = new Player();
       camera = new Camera(GraphicsDevice.Viewport);
+      input = new InputHandler();
       level = new Level1(spriteBatch, player);
       camera = level.camera;
       base.Initialize();
@@ -72,8 +74,8 @@ namespace SpaceBattle
       {
         camera.Position = Vector2.Zero;
       }
-      
-      camera.Update();
+
+      input.Update(camera, level);
       level.Update();
       base.Update(gameTime);
     }

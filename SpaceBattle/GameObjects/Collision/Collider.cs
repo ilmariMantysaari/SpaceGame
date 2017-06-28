@@ -9,41 +9,54 @@ using System.Threading.Tasks;
 namespace SpaceBattle.GameObjects.Collision
 {
   /*
-    Superclass to all different types of colliders
+    
   */
-  public class Collider
+  public abstract class Collider
   {
+    //position of the entire collider
+    public MapObject Parent;
+    
+    public abstract bool IntersectBox(BoxCollider rec);
+    public abstract bool IntersectCircle(CircleCollider circle);
+    public abstract bool IntersectPoint(PointCollider point);
 
-    //TODO: vain yhden muodon collider
-
-    public List<ColliderArea> Area;
-
-    public Collider(List<ColliderArea> colliders)
+    public Collider(MapObject parent)
     {
-      this.Area = colliders;
+      this.Parent = parent;
     }
-
-    public Collider(ColliderArea collider)
-    {
-      this.Area = new List<ColliderArea>()
-        {
-          collider
-        };
-    }
-
     public virtual bool Collision(Collider collider)
     {
-      foreach (var shape in Area)
+      if (collider.GetType() == typeof(BoxCollider))
       {
-        foreach (var shape2 in collider.Area)
+        return IntersectBox((BoxCollider)collider);
+      }
+      else if (collider.GetType() == typeof(CircleCollider))
+      {
+        return IntersectCircle((CircleCollider)collider);
+      }
+      else if (collider.GetType() == typeof(PointCollider))
+      {
+        throw new NotImplementedException();
+      }
+      else
+      {
+        throw new NotImplementedException();
+      }
+    }
+      /*
+      public virtual bool Collision(Collider collider)
+      {
+        foreach (var shape in Area)
         {
-          if (shape.Intersect(shape2))
+          foreach (var shape2 in collider.Area)
           {
-            return true;
+            if (shape.Intersect(shape2))
+            {
+              return true;
+            }
           }
         }
-      }
-      return false;
+        return false;
+      }*/
     }
-  }
 }

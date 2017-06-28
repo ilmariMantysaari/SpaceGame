@@ -21,16 +21,16 @@ namespace SpaceBattle.GameObjects.Collision
       }
 
       //TODO: parempi algoritmi kaikkien collisioneiden selvittämiseen
-      for (int i = 0; i < colliders.Count; i++)
+      for (int i = 0; i < colliders.Count - 1; i++)
       {
         var element1 = colliders.ElementAt(i);
-        for (int j = i + 0; j < colliders.Count; j++)
+        for (int j = i + 1; j < colliders.Count; j++)
         {
           var element2 = colliders.ElementAt(j);
           if (element1.Collider.Collision(element2.Collider))
           {
             element1.OnCollision(element2);
-            //element2.OnCollision(element1);
+            element2.OnCollision(element1);
           }
         }
       }

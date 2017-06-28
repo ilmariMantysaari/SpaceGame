@@ -9,7 +9,7 @@ namespace SpaceBattle.GameObjects.Levels
 {
   class Level2 : Level
   {
-    public Level2(SpriteBatch batch) : base(batch)
+    public Level2(SpriteBatch batch, Player player) : base(batch, player)
     {
 
     }

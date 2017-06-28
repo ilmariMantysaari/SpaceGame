@@ -45,7 +45,6 @@
     <Compile Include="GameObjects\Collision\BoxCollider.cs" />
     <Compile Include="GameObjects\Collision\CircleCollider.cs" />
     <Compile Include="GameObjects\Collision\PointCollider.cs" />
-    <Compile Include="GameObjects\Collision\ColliderType.cs" />
     <Compile Include="GameObjects\Collision\Collider.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObjects\AI.cs" />

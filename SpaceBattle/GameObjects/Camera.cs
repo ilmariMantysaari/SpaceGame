@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace SpaceBattle
 {
@@ -23,7 +24,7 @@ namespace SpaceBattle
       Center = new Vector2(Bounds.Width / 2, Bounds.Height / 2);
     }
 
-    public void Update()
+    public void Move(List<Direction> dir)
     {
       UpdateMatrix();
 
@@ -32,23 +33,23 @@ namespace SpaceBattle
       //TODO: Playerin nopeus ja kääntyvyys
       int moveSpeed = 10;
       float rotationSpeed = 0.04f;
-      
-      if (Keyboard.GetState().IsKeyDown(Keys.W))
+
+      if (dir.Contains(Direction.Up))
       {
         movement.X = Transform.Up.X * moveSpeed;
         movement.Y = Transform.Up.Y * -moveSpeed;
       }
-      if (Keyboard.GetState().IsKeyDown(Keys.S))
+      if (dir.Contains(Direction.Down))
       {
         movement.X = Transform.Down.X * moveSpeed;
         movement.Y = Transform.Down.Y * -moveSpeed;
       }
-      if (Keyboard.GetState().IsKeyDown(Keys.A))
+      if (dir.Contains(Direction.Right))
       {
         this.Rotation -= rotationSpeed;
         this.Rotation %= (2 * (float)Math.PI);
       }
-      if (Keyboard.GetState().IsKeyDown(Keys.D))
+      if (dir.Contains(Direction.Left))
       {
         this.Rotation += rotationSpeed;
         this.Rotation %= (2 * (float)Math.PI);
@@ -66,6 +67,10 @@ namespace SpaceBattle
           Matrix.CreateRotationZ(Rotation) *
           /*Matrix.CreateScale(Zoom, Zoom, 1) **/ Matrix.CreateTranslation(new Vector3(origin, 0.0f));
     }
+  }
+
+  public enum Direction{
+    Up, Down,Left,Right
   }
 }
 

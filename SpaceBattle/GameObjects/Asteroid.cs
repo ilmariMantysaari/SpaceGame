@@ -22,46 +22,45 @@ namespace SpaceBattle.GameObjects.Levels
     protected static Texture2D asteroidTexture2;
     protected static Texture2D asteroidTexture3;
     
-    protected int radius;
+    protected int diameter;
     protected bool destructable;
     protected int hp;
 
     public Asteroid(AsteroidType type)
     {
-      Collider = new Collider(new CircleCollider(Position, radius));
-
       switch (type)
       {
         case AsteroidType.Tiny:
-          this.radius = 10;
+          this.diameter = 10;
           break;
         case AsteroidType.Small:
-          this.radius = 50;
+          this.diameter = 50;
           break;
         case AsteroidType.Medium:
-          this.radius = 100;
+          this.diameter = 100;
           break;
         case AsteroidType.Big:
-          this.radius = 250;
+          this.diameter = 250;
           break;
         case AsteroidType.Large:
-          this.radius = 500;
+          this.diameter = 500;
           break;
         case AsteroidType.Huge:
-          this.radius = 1000;
+          this.diameter = 1000;
           break;
         case AsteroidType.Immense:
-          this.radius = 5000;
+          this.diameter = 5000;
           break;
         default:
-          this.radius = 100;
+          this.diameter = 100;
           break;
       }
+      Collider = new CircleCollider(this, this.diameter / 2);
     }
 
-    public Asteroid(int radius)
+    public Asteroid(int diameter)
     {
-      this.radius = radius;
+      this.diameter = diameter;
     }
 
     public override void LoadContent()
@@ -70,7 +69,6 @@ namespace SpaceBattle.GameObjects.Levels
 
       //Random r = new Random();
       //int type = r.Next(0, 3);
-      
       asteroidTexture = SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\asteroid");
       asteroidTexture2 = SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\asteroid2");
       asteroidTexture3= SpaceBattle.GameInstance.Content.Load<Texture2D>("Sprites\\asteroid3");
@@ -79,8 +77,10 @@ namespace SpaceBattle.GameObjects.Levels
 
     public override void Draw(SpriteBatch batch)
     {
-      Rectangle dest = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.radius, this.radius);
+      //Vector2 origin = new Vector2(Texture.Width / 2f * Scale, Texture.Height / 2f * Scale);
+      Rectangle dest = new Rectangle((int)this.Position.X, (int)this.Position.Y, this.diameter, this.diameter);
       batch.Draw(Texture, dest, Color.White);
+      //batch.Draw(Texture, Position, null, Color.White, 0f, origin, 1f, SpriteEffects.None, 0f);
     }
 
     public override void Update()
@@ -91,7 +91,7 @@ namespace SpaceBattle.GameObjects.Levels
 
     public override void OnCollision(ICollidable collider)
     {
-      Debug.WriteLine("Asteroid collision");
+
     }
   }
 }
